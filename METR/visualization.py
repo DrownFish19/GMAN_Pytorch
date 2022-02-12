@@ -1,3 +1,4 @@
+# coding: utf-8
 import tqdm
 import argparse
 import numpy as np

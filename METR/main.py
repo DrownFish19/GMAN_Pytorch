@@ -1,3 +1,4 @@
+# coding: utf-8
 import argparse
 import time
 import torch
@@ -21,8 +22,8 @@ parser.add_argument('--num_pred', type=int, default=12, help='预测时间步长
 parser.add_argument('--L', type=int, default=5, help='时空块数量')
 parser.add_argument('--K', type=int, default=8, help='Mulit-heads数量')
 parser.add_argument('--d', type=int, default=8, help='单head维度')
-parser.add_argument('--train_ratio', type=float, default=0.7, help='训练集数量比例')
-parser.add_argument('--val_ratio', type=float, default=0.1, help='验证集数量比例')
+parser.add_argument('--train_ratio', type=float, default=0.6, help='训练集数量比例')
+parser.add_argument('--val_ratio', type=float, default=0.2, help='验证集数量比例')
 parser.add_argument('--test_ratio', type=float, default=0.2, help='测试集数量比例')
 parser.add_argument('--batch_size', type=int, default=32, help='batch size')
 parser.add_argument('--max_epoch', type=int, default=1000, help='跑几代')
