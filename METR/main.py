@@ -34,6 +34,7 @@ parser.add_argument('--traffic_file', default='./data/metr-la.h5', help='traffic
 parser.add_argument('--SE_file', default='./data/SE(METR).txt', help='spatial embedding file')
 parser.add_argument('--model_file', default='./data/GMAN.pkl', help='模型保存路径')
 parser.add_argument('--log_file', default='./data/log', help='log file')
+parser.add_argument('--cuda', default='cuda:0', help='cuda device')
 
 args = parser.parse_args()
 log = open(args.log_file, 'w')
@@ -54,7 +55,7 @@ log_string(log, 'data loaded!')
 
 del trainX, trainTE, valX, valTE, testX, testTE, mean, std
 
-device = torch.device('cuda')
+device = torch.device(args.cuda)
 # 建立模型
 log_string(log, 'compiling model...')
 SE = SE.to(device)
