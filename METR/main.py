@@ -1,4 +1,5 @@
 # coding: utf-8
+import os
 import argparse
 import time
 import torch
@@ -25,8 +26,8 @@ parser.add_argument('--d', type=int, default=8, help='单head维度')
 parser.add_argument('--train_ratio', type=float, default=0.6, help='训练集数量比例')
 parser.add_argument('--val_ratio', type=float, default=0.2, help='验证集数量比例')
 parser.add_argument('--test_ratio', type=float, default=0.2, help='测试集数量比例')
-parser.add_argument('--batch_size', type=int, default=32, help='batch size')
-parser.add_argument('--max_epoch', type=int, default=1000, help='跑几代')
+parser.add_argument('--batch_size', type=int, default=16, help='batch size')
+parser.add_argument('--max_epoch', type=int, default=100, help='跑几代')
 parser.add_argument('--patience', type=int, default=10, help='等待代数')
 parser.add_argument('--learning_rate', type=float, default=0.001, help='初始学习率')
 parser.add_argument('--decay_epoch', type=int, default=5, help='decay epoch')
@@ -34,7 +35,7 @@ parser.add_argument('--traffic_file', default='./data/metr-la.h5', help='traffic
 parser.add_argument('--SE_file', default='./data/SE(METR).txt', help='spatial embedding file')
 parser.add_argument('--model_file', default='./data/GMAN.pkl', help='模型保存路径')
 parser.add_argument('--log_file', default='./data/log', help='log file')
-parser.add_argument('--cuda', default='cuda:0', help='cuda device')
+parser.add_argument('--cuda', type=str, default='0', help='cuda device')
 
 args = parser.parse_args()
 log = open(args.log_file, 'w')
@@ -55,7 +56,8 @@ log_string(log, 'data loaded!')
 
 del trainX, trainTE, valX, valTE, testX, testTE, mean, std
 
-device = torch.device(args.cuda)
+os.environ["CUDA_VISIBLE_DEVICES"] = args.cuda
+device = torch.device("cuda:0")
 # 建立模型
 log_string(log, 'compiling model...')
 SE = SE.to(device)

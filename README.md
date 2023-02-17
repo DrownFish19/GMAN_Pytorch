@@ -27,3 +27,12 @@ This version of implementation is only for learning purpose. For research, pleas
   year = "2020"
 }
 ```
+
+
+```bash
+nohup python main.py --traffic_file ./data/PEMS03.h5 --SE_file ./data/PEMS03-SE.txt --model_file ./data/GMAN-PEMS03-01.pkl --cuda 0 > PEMS03-Iter1.log &
+nohup python main.py --traffic_file ./data/PEMS03.h5 --SE_file ./data/PEMS03-SE.txt --model_file ./data/GMAN-PEMS03-02.pkl --cuda 1 > PEMS03-Iter2.log &
+
+nohup python main.py --traffic_file ./data/PEMS04.h5 --SE_file ./data/PEMS04-SE.txt --model_file ./data/GMAN-PEMS04-01.pkl --cuda 2 > PEMS04-Iter1.log &
+nohup python main.py --traffic_file ./data/PEMS04.h5 --SE_file ./data/PEMS04-SE.txt --model_file ./data/GMAN-PEMS04-02.pkl --cuda 3 > PEMS04-Iter2.log &
+```
